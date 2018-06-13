@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace TakePhotoCore.ViewModels
 {
-    class BaseViewModel
+    public class BaseViewModel
     {
         public BaseViewModel()
         {
@@ -77,7 +77,7 @@ namespace TakePhotoCore.ViewModels
 
         public void ErrorOcurred(int errorCode, string errorDescription)
         {
-            ShowMessage(AppRes.UiDialogErrorTitle, errorDescription);
+            //ShowMessage(AppRes.UiDialogErrorTitle, errorDescription);
             Listener.ErrorOcurred(errorCode, errorDescription);
 
             IsBusy = false;
@@ -93,7 +93,7 @@ namespace TakePhotoCore.ViewModels
 
         private void ToggleMenuView()
         {
-            App.MainPage.IsPresented = !App.MainPage.IsPresented;
+            //App.MainPage.IsPresented = !App.MainPage.IsPresented;
         }
 
 
