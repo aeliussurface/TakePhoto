@@ -1,10 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<helpers:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TakePhotoCore.UI.Xamls.StartPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             xmlns:helpers="clr-namespace:TakePhotoCore.UI.Helpers;assembly=TakePhotoCore"
+             xmlns:vms="clr-namespace:TakePhotoCore.ViewModels;assembly=TakePhotoCore"
+             x:Class="TakePhotoCore.UI.Xamls.StartPage"
+             x:Name="StartView"
+             >
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    
+    <ContentPage.BindingContext>
+        <vms:StartViewModel Listener="{x:Reference StartView}"/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="Fill" 
+                 HorizontalOptions="FillAndExpand"
+                 
+                    >
+        <Image Source="{Binding PhotoSource}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+                >
+        </Image>
+        <Button Text="Take Photo" Command="{Binding TryTakePhoto}"
+                >
+        </Button>
+        <Button Text="Pick photo" Command="{Binding TryPickPhoto}"
+        >
+        </Button>
+    </StackLayout>
+        
+</helpers:BaseContentPage>

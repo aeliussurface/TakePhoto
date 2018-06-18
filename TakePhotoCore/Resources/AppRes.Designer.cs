@@ -62,6 +62,15 @@ namespace TakePhotoCore.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string OptionAccept {
+            get {
+                return ResourceManager.GetString("OptionAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string OptionCancel {

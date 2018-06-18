@@ -1,6 +1,8 @@
 ﻿{
   "dependencies": {
+    "Acr.UserDialogs": "6.5.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "System.ComponentModel": "4.3.0",
     "Xam.Plugin.Media": "4.0.0.9",
     "Xamarin.Forms": "3.0.0.550146"
   },

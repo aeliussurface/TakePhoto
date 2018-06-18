@@ -26,7 +26,7 @@ namespace TakePhotoCore
                 DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
             }
 
-            MainPage = new UI.Xamls.MainPage();
+            MainPage = new UI.Xamls.StartPage();
         }
 
         protected override void OnStart()

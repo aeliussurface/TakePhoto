@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace TakePhotoCore.ViewModels
 {
-    public class BaseViewModel
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public BaseViewModel()
         {
@@ -33,7 +33,7 @@ namespace TakePhotoCore.ViewModels
 
             message.OnCompleted += onCompleted;
 
-            Listener.ShowMessage(message);
+            Listener?.ShowMessage(message);
         }
 
         protected void UpdateProgress(string msg, int percent, Action onCompleted)
@@ -44,7 +44,7 @@ namespace TakePhotoCore.ViewModels
                 Percent = percent
             };
 
-            Listener.IsExecuting(progress);
+            Listener?.IsExecuting(progress);
             //MessagingCenter.Send(Application.Current, CoreConstants.UpdateProgress, progress);
         }
 
@@ -67,7 +67,6 @@ namespace TakePhotoCore.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //[NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -77,8 +76,8 @@ namespace TakePhotoCore.ViewModels
 
         public void ErrorOcurred(int errorCode, string errorDescription)
         {
-            //ShowMessage(AppRes.UiDialogErrorTitle, errorDescription);
-            Listener.ErrorOcurred(errorCode, errorDescription);
+            ShowMessage(AppRes.UiDialogErrorTitle, errorDescription);
+            Listener?.ErrorOcurred(errorCode, errorDescription);
 
             IsBusy = false;
         }
